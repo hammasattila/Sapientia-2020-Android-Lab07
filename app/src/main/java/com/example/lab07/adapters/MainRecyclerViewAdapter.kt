@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lab07.R
 import com.example.lab07.data.Food
 
-class MainRecyclerViewAdapter(
-    private val data: Array<Food>,
-    private val listener: OnItemClickListener
-) :
+class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
     RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
 
+    private var data: List<Food> = emptyList()
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
@@ -23,7 +21,7 @@ class MainRecyclerViewAdapter(
 
         override fun onClick(v: View?) {
             val position: Int = adapterPosition
-            if(position != RecyclerView.NO_POSITION) {
+            if (position != RecyclerView.NO_POSITION) {
                 listener.onItemClick(position)
             }
         }
@@ -48,5 +46,10 @@ class MainRecyclerViewAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
+    }
+
+    fun setData(listOfFood: List<Food>){
+        data = listOfFood
+        notifyDataSetChanged()
     }
 }

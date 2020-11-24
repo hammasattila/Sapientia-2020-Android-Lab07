@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FoodViewModel(application: Application):AndroidViewModel(application) {
-    private val allFoods: LiveData<List<Food>>
+class FoodViewModel(application: Application) : AndroidViewModel(application) {
+    val allFoods: LiveData<List<Food>>
     private val repository: FoodRepository
 
     init {
@@ -17,8 +17,8 @@ class FoodViewModel(application: Application):AndroidViewModel(application) {
         allFoods = repository.getAllFoods
     }
 
-    fun addFood(food: Food){
-        viewModelScope.launch(Dispatchers.IO){
+    fun addFood(food: Food) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.addFood(food)
         }
     }

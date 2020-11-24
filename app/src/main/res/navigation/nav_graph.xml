@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.lab07.fragments.ListFragment"
-        android:label="fragment_list"
+        android:label="Food list"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/show_details"
@@ -17,16 +17,16 @@
     <fragment
         android:id="@+id/addFoodFragment"
         android:name="com.example.lab07.fragments.AddFoodFragment"
-        android:label="fragment_add_food"
+        android:label="Add food"
         tools:layout="@layout/fragment_add_food" />
     <fragment
         android:id="@+id/informationFragment"
         android:name="com.example.lab07.fragments.InformationFragment"
-        android:label="fragment_information"
+        android:label="Information"
         tools:layout="@layout/fragment_information" />
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.lab07.fragments.DetailsFragment"
-        android:label="fragment_details"
+        android:label="Food details"
         tools:layout="@layout/fragment_details" />
 </navigation>
