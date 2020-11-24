@@ -1,3 +1,11 @@
 package com.example.lab07.data
 
-data class Food(val name: String, val description: String) {}
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "food_table")
+data class Food(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+    val name: String, val description: String
+)

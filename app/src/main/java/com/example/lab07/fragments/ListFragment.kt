@@ -24,13 +24,7 @@ class ListFragment : Fragment(), MainRecyclerViewAdapter.OnItemClickListener {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_main)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = MainRecyclerViewAdapter(arrayOf(
-            Food("Keto Taco Cups", "Cheese shells are all the rage"),
-            Food("Cheesy Mexican Cauliflower Rice", "This is a perfect low-carb option that doesn't sacrifice any of the flavor."),
-            Food("Turkey Taco Lettuce Wraps", "Who needs tortillas?"),
-            Food("Best-Ever Migas", "Breakfast doesn't get much better than this."),
-            Food("Spicy Chicken Taquitos", "The avocado cream is a non-negotiable. ")
-        ), this)
+        recyclerView.adapter = MainRecyclerViewAdapter(arrayOf(), this)
 
         return view
     }
