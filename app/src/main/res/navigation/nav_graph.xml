@@ -11,16 +11,22 @@
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
-            android:id="@+id/action_listFragment_to_addFoodFragment"
-            app:destination="@id/addFoodFragment" />
+            android:id="@+id/show_details"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
         android:name="com.example.lab07.fragments.AddFoodFragment"
         android:label="fragment_add_food"
-        tools:layout="@layout/fragment_add_food" >
-        <action
-            android:id="@+id/action_addFoodFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_food" />
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.example.lab07.fragments.InformationFragment"
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.lab07.fragments.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

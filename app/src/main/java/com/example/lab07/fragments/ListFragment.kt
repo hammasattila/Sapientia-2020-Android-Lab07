@@ -5,13 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab07.R
 import com.example.lab07.adapters.MainRecyclerViewAdapter
 import com.example.lab07.data.Food
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), MainRecyclerViewAdapter.OnItemClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +30,13 @@ class ListFragment : Fragment() {
             Food("Turkey Taco Lettuce Wraps", "Who needs tortillas?"),
             Food("Best-Ever Migas", "Breakfast doesn't get much better than this."),
             Food("Spicy Chicken Taquitos", "The avocado cream is a non-negotiable. ")
-        ))
+        ), this)
 
         return view
+    }
+
+    override fun onItemClick(position: Int) {
+        Toast.makeText(context, "Item ${position} was clicked.", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(ListFragmentDirections.showDetails())
     }
 }

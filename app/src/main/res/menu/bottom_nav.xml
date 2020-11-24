@@ -3,13 +3,13 @@
     <item
         android:id="@+id/listFragment"
         android:icon="@drawable/ic_round_list"
-        android:title="List" />
+        android:title="@string/bottom_nav_item_list" />
     <item
         android:id="@+id/addFoodFragment"
         android:icon="@drawable/ic_round_add"
-        android:title="Add" />
+        android:title="@string/bottom_nav_item_add" />
     <item
-        android:id="@+id/ic_profile"
-        android:icon="@drawable/ic_round_person"
-        android:title="Profile" />
+        android:id="@+id/informationFragment"
+        android:icon="@drawable/ic_round_info"
+        android:title="@string/bottom_nav_item_about" />
 </menu>

@@ -8,10 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lab07.R
 import com.example.lab07.data.Food
 
-class MainRecyclerViewAdapter(private val data: Array<Food>) : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
+class MainRecyclerViewAdapter(
+    private val data: Array<Food>,
+    private val listener: OnItemClickListener
+) :
+    RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            if(position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -23,10 +38,15 @@ class MainRecyclerViewAdapter(private val data: Array<Food>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.findViewById<TextView>(R.id.item_food_text_title).text = data[position].name
-        holder.view.findViewById<TextView>(R.id.item_food_text_description).text = data[position].description
+        holder.view.findViewById<TextView>(R.id.item_food_text_description).text =
+            data[position].description
     }
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }
