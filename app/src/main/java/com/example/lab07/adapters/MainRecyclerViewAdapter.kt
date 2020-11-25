@@ -3,6 +3,7 @@ package com.example.lab07.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab07.R
@@ -13,10 +14,11 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
 
     private var data: List<Food> = emptyList()
 
-    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
 
         init {
             view.setOnClickListener(this)
+            view.setOnLongClickListener(this)
         }
 
         override fun onClick(v: View?) {
@@ -24,6 +26,16 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
             if (position != RecyclerView.NO_POSITION) {
                 listener.onItemClick(position)
             }
+        }
+
+        override fun onLongClick(v: View?): Boolean {
+            val position: Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemLongClick(position)
+                return true
+            }
+
+            return false
         }
     }
 
@@ -38,6 +50,10 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
         holder.view.findViewById<TextView>(R.id.item_food_text_title).text = data[position].name
         holder.view.findViewById<TextView>(R.id.item_food_text_description).text =
             data[position].description
+        holder.view.findViewById<ImageView>(R.id.item_food_image).transitionName =
+            "food_image_${data[position].id}";
+        holder.view.findViewById<TextView>(R.id.item_food_text_description).transitionName =
+            "food_description_${data[position].id}";
     }
 
     override fun getItemCount(): Int {
@@ -46,6 +62,7 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
+        fun onItemLongClick(position: Int)
     }
 
     fun setData(listOfFood: List<Food>){

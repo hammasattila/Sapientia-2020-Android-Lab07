@@ -22,4 +22,8 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
             repository.addFood(food)
         }
     }
+
+    fun getFood(foodId: Int): LiveData<Food> {
+        return repository.getFood(foodId)
+    }
 }

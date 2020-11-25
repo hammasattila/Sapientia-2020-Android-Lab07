@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/show_details"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
@@ -28,5 +32,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.lab07.fragments.DetailsFragment"
         android:label="Food details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="foodId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
