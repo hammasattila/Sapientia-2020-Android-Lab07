@@ -18,8 +18,4 @@ class MainActivity : AppCompatActivity() {
         val bottomNav = binding.viewBottomNav
         bottomNav.setupWithNavController(navController)
     }
-
-    override fun onStart() {
-        super.onStart()
-    }
 }
