@@ -11,6 +11,9 @@ class FoodRepository(private val foodDao: FoodDao) {
 
     fun getFood(id: Int): LiveData<Food>{
         return foodDao.getFood(id)
+    }
 
+    suspend fun removeFood(food: Food) {
+        foodDao.removeFood(food)
     }
 }

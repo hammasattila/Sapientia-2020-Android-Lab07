@@ -86,13 +86,13 @@ class ListFragment : Fragment(), MainRecyclerViewAdapter.OnItemClickListener {
         }
     }
 
-    override fun onItemLongClick(position: Int) {
-        Toast.makeText(context, "Item $position was long clicked.", Toast.LENGTH_SHORT).show()
+    override fun onItemLongClick(food: Food) {
+        Toast.makeText(context, "Item ${food.name} was long clicked.", Toast.LENGTH_SHORT).show()
         val dialog = AlertDialog.Builder(requireContext())
             .setTitle("Are you sure you want to vaporize this food?")
-            .setMessage("Blabla is going to be deleted from the local database. If you want to continue click VAPORIZE")
+            .setMessage("${food.name} is going to be deleted from the local database. If you want to continue click VAPORIZE")
             .setPositiveButton("Vaporize", DialogInterface.OnClickListener { dialog, which ->
-
+                mFoodViewModel.removeFood(food)
             })
             .setNegativeButton("Cancel", null)
             .show()

@@ -31,7 +31,7 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
         override fun onLongClick(v: View?): Boolean {
             val position: Int = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                listener.onItemLongClick(position)
+                listener.onItemLongClick(data[position])
                 return true
             }
 
@@ -62,7 +62,7 @@ class MainRecyclerViewAdapter(private val listener: OnItemClickListener) :
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
-        fun onItemLongClick(position: Int)
+        fun onItemLongClick(food: Food)
     }
 
     fun setData(listOfFood: List<Food>){

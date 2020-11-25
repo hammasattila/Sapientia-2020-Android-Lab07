@@ -26,4 +26,10 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
     fun getFood(foodId: Int): LiveData<Food> {
         return repository.getFood(foodId)
     }
+
+    fun removeFood(food: Food) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeFood(food)
+        }
+    }
 }

@@ -1,10 +1,7 @@
 package com.example.lab07.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface FoodDao {
@@ -14,4 +11,10 @@ interface FoodDao {
 
     @Query("SELECT * FROM food_table ORDER BY name ASC")
     fun getAllFoods(): LiveData<List<Food>>
+
+    @Query("SELECT * FROM food_table WHERE id = :id")
+    fun getFood(id: Int): LiveData<Food>
+
+    @Delete
+    suspend fun removeFood(food: Food)
 }
